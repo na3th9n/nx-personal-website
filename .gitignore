@@ -42,3 +42,6 @@ next-env.d.ts
 
 # private notes (not published)
 /notes/
+
+# personal Claude Code settings
+/.claude/settings.local.json
