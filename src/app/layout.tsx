@@ -6,6 +6,7 @@ import {
   IBM_Plex_Serif,
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { MotionProviders } from "@/components/os/MotionProviders";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -49,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${plexSans.variable} ${plexCondensed.variable} ${plexSerif.variable} ${plexMono.variable}`}
     >
       <body>
-        {children}
+        <MotionProviders>{children}</MotionProviders>
         <Analytics />
       </body>
     </html>
