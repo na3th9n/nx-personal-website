@@ -1,26 +1,140 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ── Design tokens ─────────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* colours */
+  --color-desk: #f4f4f2; /* desktop */
+  --color-desk-dot: #d6d6d2; /* 1.2px dots on a 24px grid */
+  --color-paper: #ffffff; /* windows, menu bar, taskbar */
+  --color-ink: #000000; /* text, borders, primary buttons, focused tile */
+  --color-muted: #5e5e5e; /* secondary text, inactive titles (4.5:1+ on white) */
+  --color-body: #333333; /* long body copy */
+  --color-rule-soft: #e5e5e5; /* inner row dividers only */
+  --color-chip-grey: #a3a3a3; /* "archived" status fill */
+  --color-signal: #00ff41; /* green: FILL ONLY, always bordered */
+
+  /* depth: hard offset, no blur */
+  --shadow-window: 4px 4px 0 0 var(--color-ink);
+  --shadow-lift: 6px 6px 0 0 var(--color-ink);
+  --shadow-press: 4px 4px 0 0 var(--color-ink);
+
+  /* type (variables come from next/font in layout.tsx) */
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-condensed: var(--font-plex-condensed), var(--font-plex-sans), sans-serif;
+  --font-serif: var(--font-plex-serif), Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* label tracking used by every mono label, chip and date */
+  --tracking-label: 0.08em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Base ──────────────────────────────────────────────────────── */
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-desk);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Visible keyboard focus on everything interactive. */
+  :focus-visible {
+    outline: 2px dashed var(--color-ink);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Desktop dot grid (the only gradient allowed) ──────────────── */
+@utility desk-grid {
+  background-color: var(--color-desk);
+  background-image: radial-gradient(
+    var(--color-desk-dot) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 24px 24px;
+}
+
+/* ── Retro scrollbar: 16px track, 2px left rule, bordered thumb ── */
+@utility os-scroll {
+  overflow-y: auto;
+
+  /* Chrome ignores these pseudo-elements once scrollbar-color is set,
+     so the standard properties live only in the Firefox fallback below. */
+  &::-webkit-scrollbar {
+    width: 16px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--color-paper);
+    border-left: 2px solid var(--color-ink);
+  }
+  &::-webkit-scrollbar-thumb {
+    /* transparent side borders centre an 8px bordered bar in the track */
+    background: var(--color-paper);
+    background-clip: padding-box;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0 3px 0 5px;
+    box-shadow: inset 0 0 0 2px var(--color-ink);
+  }
+  &::-webkit-scrollbar-button:single-button {
+    display: block;
+    height: 14px;
+    background-color: var(--color-paper);
+    border-left: 2px solid var(--color-ink);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 8px 6px;
+  }
+  &::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6'%3E%3Cpath d='M4 0L8 6H0Z'/%3E%3C/svg%3E");
+  }
+  &::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6'%3E%3Cpath d='M4 6L8 0H0Z'/%3E%3C/svg%3E");
+  }
+}
+
+/* Firefox has no pseudo-elements: fall back to a thin ink thumb. */
+@supports not selector(::-webkit-scrollbar) {
+  .os-scroll {
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-ink) var(--color-paper);
+  }
+}
+
+/* ── Clock colon blink (once per second) ───────────────────────── */
+@keyframes colon-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@utility colon-blink {
+  animation: colon-blink 1s steps(1, end) infinite;
+}
+
+/* ── Reduced motion: no CSS animation or transform transitions ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .colon-blink {
+    animation: none !important;
+  }
 }
