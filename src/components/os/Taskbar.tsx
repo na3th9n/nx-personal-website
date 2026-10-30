@@ -1,8 +1,14 @@
 import { TaskbarTile } from "./TaskbarTile";
-import { WINDOWS } from "./windows";
+import type { ManagerState } from "./useWindowManager";
+import { WINDOWS, type WindowId } from "./windows";
 
-// Phase 1: static tiles. Phase 2 wires open/focus state and click logic.
-export function Taskbar() {
+type Props = {
+  windows: ManagerState["windows"];
+  focused: WindowId | null;
+  onToggle: (id: WindowId) => void;
+};
+
+export function Taskbar({ windows, focused, onToggle }: Props) {
   return (
     <nav
       aria-label="Windows"
@@ -10,7 +16,13 @@ export function Taskbar() {
     >
       <div className="flex w-full border-t-2 border-ink bg-paper md:w-auto md:border-x-2 md:shadow-[4px_0_0_0_var(--color-ink)]">
         {WINDOWS.map((win) => (
-          <TaskbarTile key={win.id} win={win} open={false} focused={false} />
+          <TaskbarTile
+            key={win.id}
+            win={win}
+            open={windows[win.id].open}
+            focused={focused === win.id}
+            onClick={() => onToggle(win.id)}
+          />
         ))}
       </div>
     </nav>
