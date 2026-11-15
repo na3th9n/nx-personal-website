@@ -40,11 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# private notes (not published)
-/notes/
-
-# personal Claude Code settings
-/.claude/settings.local.json
-
-# design references (third-party screenshots, not published)
+# private planning + design reference (kept local)
+/docs/
 /design/
