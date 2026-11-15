@@ -1,0 +1,222 @@
+# yaml-language-server: $schema=./content.schema.json
+# ============================================================
+#  NATHAN'S WEBSITE CONTENT
+#  Edit anything below, save, and the site updates.
+#
+#  Rules of thumb:
+#   - Indentation matters: use 2 spaces, never tabs.
+#   - A line starting with "- " is one item in a list.
+#     Copy an existing item (all of its lines) to add another.
+#   - If text contains a colon followed by a space (": "),
+#     wrap the whole text in double quotes.
+#   - **bold** and [link text](https://url) work in any text.
+#   - Lines starting with # are notes for you; the site ignores them.
+# ============================================================
+
+# ------------------------------------------------------------
+#  SITE BASICS
+# ------------------------------------------------------------
+site:
+  name: Nathan Xie # big header on About, browser tab title
+  subtitle: Software engineer · Toronto # small line under your name
+  description: Software engineer in Toronto. # shown in Google results and link previews
+
+# ------------------------------------------------------------
+#  SIDEBAR
+#  Links at the bottom of the sidebar. Remove a line to hide it.
+#  Put your résumé PDF in the "public" folder and name it resume.pdf.
+# ------------------------------------------------------------
+sidebar:
+  monogram: NX
+  links:
+    - label: GitHub
+      url: https://github.com/na3th9n
+    - label: LinkedIn
+      url: https://www.linkedin.com/in/nathanxie/
+    - label: Résumé
+      url: /resume.pdf
+
+# ------------------------------------------------------------
+#  ABOUT PAGE — INTRO BULLETS
+#  Each "- " line is one bullet. Add or remove freely.
+#  The email bullet is added automatically at the end (see below).
+# ------------------------------------------------------------
+intro:
+  - TODO
+  - TODO
+  - TODO
+
+# The last bullet always reads:  My email is <email>. <email_note>
+email: na3than.xie@gmail.com
+email_note: Contact me for anything :)
+
+# ------------------------------------------------------------
+#  ABOUT PAGE — PHOTOS (slideshow next to your name)
+#  1. Put photos in the folder  public/photos/
+#  2. List them here in the order you want them shown.
+#  Any size or shape works; they're cropped to fit the frame.
+#  "focus" (optional) picks which part stays visible when cropped:
+#     "50% 20%" = keep the top, "50% 80%" = keep the bottom.
+#  Remove all photos to hide the slideshow.
+# ------------------------------------------------------------
+photos:
+  - file: placeholder-1.svg
+    alt: TODO describe the photo for screen readers
+    caption: TODO
+  - file: placeholder-2.svg
+    alt: TODO
+    caption: TODO
+  - file: placeholder-3.svg
+    alt: TODO
+    caption: TODO
+
+# ------------------------------------------------------------
+#  ABOUT PAGE — EXPERIENCE (newest first)
+#  To add a job: copy one whole block (from "- dates" to the
+#  end of its "stack" line) and paste it where it should go.
+#  "stack" = the pills under the job. Remove the line for none.
+#  "company_url" (optional) makes the company name a link.
+# ------------------------------------------------------------
+experience:
+  - dates: Jan – Apr 2026
+    title: Software Engineer Intern
+    company: StackAdapt
+    company_url: https://www.stackadapt.com
+    summary: Built ad campaign forecasting dashboards in React and the Rails pipeline that feeds them through GraphQL.
+    stack: [TypeScript, Ruby, React, Redux, Ruby on Rails, GraphQL]
+
+  - dates: May – Aug 2025
+    title: Software Engineer Intern
+    company: StackAdapt
+    company_url: https://www.stackadapt.com
+    summary: Built role-based access control for sharing campaigns and an interactive campaign metrics visualization tool.
+    stack: [TypeScript, Ruby, React, Redux, Ruby on Rails, GraphQL]
+
+  - dates: Sep – Dec 2024
+    title: Frontend Developer Intern
+    company: HVE Healthcare Assessments
+    company_url: https://hvehealth.com
+    summary: Built a Svelte email client that brings every employee's inbox into the company's internal CRM.
+    stack: [TypeScript, SQL, Svelte, PostgreSQL]
+
+  - dates: Jan – Apr 2024
+    title: Software Engineer Intern
+    company: Magna International
+    company_url: https://www.magna.com
+    summary: Designed a SQL Server database for 10,000+ engineers and the Python pipeline that populates it.
+    stack: [Python, SQL, MS SQL Server]
+
+  - dates: Sep – Dec 2022
+    title: Full-stack Developer Intern
+    company: Co-operators
+    company_url: https://www.cooperators.ca
+    summary: Modernized an internal IT service request platform with React, Node.js and MongoDB.
+    stack: [JavaScript, React, Node.js, MongoDB]
+
+  - dates: Jan – Apr 2022
+    title: Software Engineer Intern
+    company: Electrovaya
+    company_url: https://electrovaya.com
+    summary: Wrote a Python tool that pulls diagnostics from forklift batteries, cutting on-site service costs by 96.7% per incident.
+    stack: [Python]
+
+# ------------------------------------------------------------
+#  ABOUT PAGE — EDUCATION
+# ------------------------------------------------------------
+education:
+  - dates: 2021 – 2026
+    title: BASc Engineering
+    school: University of Waterloo
+    summary: TODO
+
+# ------------------------------------------------------------
+#  PROJECTS PAGE (newest first)
+#  "live" and "source" are optional links; delete a line to hide that link.
+#  "live_label" / "source_label" (optional) change the link text.
+#  "status" is optional: shipped, in progress, or archived.
+# ------------------------------------------------------------
+projects:
+  - year: 2026
+    title: EVA
+    summary: A wearable suit that tracks muscle activation and movement during lifting, with a React Native app that gives real-time form feedback. Software lead.
+    stack: [React Native, TypeScript]
+    live: https://successful-radiator-9f3.notion.site/EVA-A-Wearable-Gym-Form-Correction-System-183c6cb96df983a9981b8121bda48eda
+    live_label: Write-up # optional: changes the link text (default "Live")
+
+  - year: 2026
+    title: TODO
+    summary: TODO
+    stack: [TODO]
+    status: in progress
+    live: https://example.com
+    source: https://github.com/na3th9n/TODO
+
+# ------------------------------------------------------------
+#  LABELS (rarely changed)
+#  Every other bit of wording on the site.
+# ------------------------------------------------------------
+labels:
+  nav_about: About
+  nav_projects: Projects
+  experience_heading: Experience
+  education_heading: Education
+  projects_heading: Projects
+  email_prefix: My email is
+  live_link: Live
+  source_link: Source
+  theme_dark: Dark
+  theme_light: Light
+  not_found_title: Not found
+  not_found_link: Back to About
+  # Read aloud by screen readers (not shown on screen):
+  skip_to_content: Skip to content
+  main_nav: Main
+  collapse_sidebar: Collapse sidebar
+  expand_sidebar: Expand sidebar
+  switch_to_dark: Switch to dark mode
+  switch_to_light: Switch to light mode
+  photos: Photos
+  previous_photo: Previous photo
+  next_photo: Next photo
+  photo_position: Photo {n} of {total} # {n} and {total} are filled in for you
+
+# ------------------------------------------------------------
+#  CURSOR TRAIL
+#  Colourful pixels that follow the mouse on desktop,
+#  and burst out wherever you click.
+#  Set enabled to false to turn it off.
+#  Colours: any hex codes; one list for each theme.
+# ------------------------------------------------------------
+cursor_trail:
+  enabled: true
+  pixel_size: 12 # size of each square, in pixels
+  fade_ms: 600 # how long each square takes to fade
+  spacing: 3 # drop a pixel every N squares the mouse crosses (higher = fewer pixels)
+  max_pixels: 16 # most trail pixels on screen at once
+  click_explosion: true # burst of pixels wherever you click
+  explosion_pixels: 18 # how many pixels per burst
+  colors_light:
+    ["#1A7F37", "#0969DA", "#8250DF", "#BF3989", "#BC4C00", "#9A6700"]
+  colors_dark:
+    ["#3FB950", "#58A6FF", "#BC8CFF", "#F778BA", "#F0883E", "#E3B341"]
+
+# ------------------------------------------------------------
+#  NAME ANIMATION (the big "Nathan Xie" on the About page)
+#  Your name is typed out with a terminal cursor, deleted,
+#  and retyped in the next font in this list, in a loop.
+#  "font" must be the exact name of a Google Font (fonts.google.com).
+#  The first one is what shows if animation is turned off.
+#  Adjust "size" if a font looks too big or too small.
+# ------------------------------------------------------------
+name_fonts:
+  enabled: true
+  hold_seconds: 1.8 # how long the full name stays before deleting
+  type_ms: 80 # time per letter when typing
+  delete_ms: 50 # time per letter when deleting
+  cursor: block # block (█) or bar (|)
+  fonts:
+    - { font: Newsreader, weight: 300, italic: false, size: 104, tracking: -0.02 }
+    - { font: Instrument Serif, weight: 400, italic: true, size: 112, tracking: -0.01 }
+    - { font: Space Mono, weight: 700, italic: false, size: 72, tracking: -0.04 }
+    - { font: Bricolage Grotesque, weight: 800, italic: false, size: 92, tracking: -0.04 }
+    - { font: Silkscreen, weight: 400, italic: false, size: 64, tracking: 0 }

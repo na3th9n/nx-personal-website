@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "schema": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-schema.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
