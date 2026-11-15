@@ -1,0 +1,111 @@
+# Decisions
+
+Judgment calls made while building from the v5 plan and the mockup.
+
+## Repo and hosting
+
+- **Reused the existing `na3th9n/nx-personal-website` repo and its Vercel project**
+  instead of creating a new `portfolio` repo. `na3th9n/portfolio` already
+  exists and is unrelated. This repo was already connected to Vercel with
+  auto-deploy from `main`, so no new project or `vercel link` was needed. The
+  old NATHAN.OS code was removed in its own commit; history was not rewritten.
+- The Vercel CLI wasn't logged in on the build machine. That didn't matter,
+  because deploys come from the GitHub integration.
+- `docs/` (the plan) and `design/` (the mockup) are gitignored and kept local,
+  so the private planning notes stay out of the public repo.
+
+## Cursor trail: fewer pixels
+
+- Nathan asked for fewer trailing pixels than the mockup. Two new
+  `content.yaml` settings handle this:
+  - `spacing: 3`: the trail drops one pixel every 3 grid cells the mouse
+    crosses (the mockup filled every cell).
+  - `max_pixels: 16`: at most 16 trail pixels on screen (the plan said 60).
+- `fade_ms` lowered from 700 to 600 for a shorter tail.
+- The click explosion is unchanged (18 pixels, 150 particle cap overall).
+
+## Content file
+
+- Added extra entries to `labels:` for text that screen readers announce but
+  that isn't visible: skip link, nav landmark name, collapse/expand, theme
+  toggle actions, slideshow name, prev/next, and "Photo {n} of {total}". This
+  keeps every string out of `.ts`/`.tsx` files, as the plan requires.
+- Added `# yaml-language-server: $schema=./content.schema.json` as line 1.
+  The schema is generated from the zod schema with `npm run schema` (uses
+  zod 4's built-in `z.toJSONSchema`; no extra dependency).
+- `status` on a project renders as small muted text next to the stack pills.
+  The plan allowed the field but didn't place it.
+- Build errors give the field path and the source line, e.g.
+  `content.yaml (line 95) → experience[2].title is missing`.
+
+## Layout
+
+- **About grid stacks by container width, not viewport.** At a 768–1100px
+  viewport with the sidebar expanded, a 300px photo column plus a 56px gap
+  leaves too little room for the name. The About grid uses a container query
+  (`.about-wrap`) and moves the photo above the text when the content column
+  is under 780px wide. That covers mobile, tablets and the expanded sidebar.
+- Name sizes scale with the text column (`min(<size>px, <size>/640 × 100cqi)`).
+  640px is the text column width at 1440px with the sidebar expanded. The
+  fixed-height name box scales the same way, so nothing below it moves.
+- Main padding drops from 72px to 56/48px between 768px and 1100px.
+- On mobile the sidebar's GitHub/LinkedIn/Résumé links move to a footer at the
+  end of `<main>`.
+- Styling is mostly hand-written CSS classes in `globals.css`, mirroring the
+  mockup's structure, with Tailwind v4 for the reset, the `dark` variant and
+  `sr-only`. That kept the build close to the approved mockup.
+
+## Theme and sidebar
+
+- The theme toggle's icon, text and screen-reader label switch with CSS
+  (`.when-light` / `.when-dark` keyed off `html.dark`), not React state. The
+  server HTML is correct for both themes, so there's no hydration mismatch and
+  no icon flash.
+- The sidebar state lives on `<html data-sidebar="collapsed">`, set by an
+  inline `<head>` script before paint; React reads it with
+  `useSyncExternalStore`. The expanded pane and the rail each have a fixed
+  width and swap with a 220ms fade, so text is clipped, not squashed, while
+  the width animates. The fade is enabled only after the first toggle, so the
+  page doesn't fade in on load.
+- After clicking collapse/expand, focus moves to the twin button, because the
+  clicked button gets hidden.
+
+## Photos and images
+
+- `priority` on `next/image` is deprecated in Next 16, so the first slide uses
+  `preload`. The next slide gets `loading="eager"`.
+- Placeholder photos are SVGs. Next serves `.svg` sources unoptimized
+  automatically.
+- The favicon is `src/app/icon.svg` (Next's file convention), not
+  `public/icon.svg`.
+
+## Next.js 16 specifics
+
+- `create-next-app` now turns on `cacheComponents` and `partialPrefetching`.
+  Reading `content.yaml` with `fs.readFileSync` at module scope counts as
+  "predictable" under Cache Components, so all routes still prerender as
+  static.
+- During the build, one production build served a stale CSS chunk from the
+  Turbopack cache (the scaffold's CSS). A clean `rm -rf .next` fixed it, and
+  later incremental builds picked up CSS edits correctly. If a deploy ever
+  shows old styles, redeploy from Vercel with **"Use existing build cache"**
+  unchecked.
+
+## Verification
+
+Checked with Playwright against `npm run build && npm start`:
+
+- Screenshots at 360, 768 and 1440px; light and dark; sidebar expanded and
+  collapsed. No horizontal overflow.
+- Experience/Education rules end at the same x as the intro column at 1440,
+  1100, 1024, 900 and 768px, expanded and collapsed. They never run under the
+  photo.
+- The intro's bounding box stayed identical over 33s of slideshow advances,
+  manual prev/next and three or more font swaps.
+- Each of the 5 name fonts fits the column (widest: 524px in a 640px column).
+- With the sidebar collapsed, first paint is already 72px wide. In dark mode,
+  `html.dark` is set at DOMContentLoaded (no light flash).
+- Tab order: skip link → monogram → collapse → nav → links → theme → email →
+  prev/next. The `[` shortcut toggles the sidebar.
+- Reduced motion: static name, no caret blink, no auto-advance.
+- `/nope` returns a 404 with the "Not found" page.
