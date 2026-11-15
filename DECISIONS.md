@@ -11,8 +11,8 @@ Judgment calls made while building from the v5 plan and the mockup.
   old NATHAN.OS code was removed in its own commit; history was not rewritten.
 - The Vercel CLI wasn't logged in on the build machine. That didn't matter,
   because deploys come from the GitHub integration.
-- `docs/` (the plan) and `design/` (the mockup) are gitignored and kept local,
-  so the private planning notes stay out of the public repo.
+- `docs/PLAN.md` (the build plan) and `design/mockup.html` (the approved
+  mockup) are committed alongside the code for reference.
 
 ## Cursor trail: fewer pixels
 

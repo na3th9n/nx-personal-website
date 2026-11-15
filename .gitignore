@@ -40,6 +40,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# private planning + design reference (kept local)
-/docs/
-/design/
