@@ -34,16 +34,10 @@ export function PanelIcon({ open }: { open: boolean }) {
   );
 }
 
-const CHEVRONS = {
-  left: "M15 6l-6 6 6 6",
-  right: "M9 6l6 6-6 6",
-  down: "M6 9l6 6 6-6",
-} as const;
-
-export function ChevronIcon({ dir, size = 14 }: { dir: keyof typeof CHEVRONS; size?: number }) {
+export function ChevronIcon({ dir }: { dir: "left" | "right" }) {
   return (
-    <svg {...base} width={size} height={size} strokeWidth={2}>
-      <path d={CHEVRONS[dir]} />
+    <svg {...base} width={14} height={14} strokeWidth={2}>
+      <path d={dir === "left" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"} />
     </svg>
   );
 }

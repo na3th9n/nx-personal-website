@@ -78,11 +78,9 @@ photos:
     caption: TODO
 
 # ------------------------------------------------------------
-#  ABOUT PAGE — EXPERIENCE (newest first)
+#  EXPERIENCE PAGE (newest first)
 #  To add a job: copy one whole block (from "- dates" to the
 #  end of its "stack" line) and paste it where it should go.
-#  Only the dates, title and company show at first; the summary
-#  and "stack" pills appear when someone clicks "More details".
 #  "stack" = the pills under the job. Remove the line for none.
 #  "company_url" (optional) makes the company name a link.
 # ------------------------------------------------------------
@@ -166,6 +164,7 @@ projects:
 # ------------------------------------------------------------
 labels:
   nav_about: About
+  nav_experience: Experience
   nav_projects: Projects
   experience_heading: Experience
   education_heading: Education
@@ -188,8 +187,6 @@ labels:
   previous_photo: Previous photo
   next_photo: Next photo
   photo_position: Photo {n} of {total} # {n} and {total} are filled in for you
-  show_details: More details # button that opens a job's description
-  hide_details: Less details # same button once it's open
 
 # ------------------------------------------------------------
 #  CURSOR TRAIL

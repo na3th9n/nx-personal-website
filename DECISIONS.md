@@ -72,12 +72,19 @@ Judgment calls made while building from the v5 plan and the mockup.
 - Wide fonts are capped at 1.6× the first font's width so they always fit
   the column. Silkscreen, a very wide pixel font, hits that cap and renders
   at about 94% of the others' height.
-- **Experience rows collapse.** Only dates and Role · Company show, with a
-  "More details" button (`aria-expanded`). The summary and pills slide open
-  with a grid-rows transition. Collapsed details stay in the HTML for
-  search engines but are `inert`, so Tab skips them. Education rows stay
-  open, since there's only one.
+- Collapsible "More details" experience rows were tried and then removed
+  at Nathan's request. Rows always show the description and pills again.
 - Added Instagram, TikTok and YouTube to the sidebar links.
+
+## Revision 2 (Experience page, photo alignment)
+
+- Experience moved to its own `/experience` page, between About and
+  Projects in the nav (new `labels.nav_experience`). It uses the same page
+  layout as Projects (48px title, 640px column). Education stays on About.
+- The About grid is now three rows: name + subtitle, then intro + photo,
+  then education. The photo frame's top edge lines up with the first bullet
+  instead of the name. When the column stacks on narrow screens, the photo
+  still goes first.
 
 ## Theme and sidebar
 

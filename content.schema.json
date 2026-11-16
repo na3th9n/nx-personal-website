@@ -320,6 +320,10 @@
           "type": "string",
           "minLength": 1
         },
+        "nav_experience": {
+          "type": "string",
+          "minLength": 1
+        },
         "nav_projects": {
           "type": "string",
           "minLength": 1
@@ -403,18 +407,11 @@
         "photo_position": {
           "type": "string",
           "minLength": 1
-        },
-        "show_details": {
-          "type": "string",
-          "minLength": 1
-        },
-        "hide_details": {
-          "type": "string",
-          "minLength": 1
         }
       },
       "required": [
         "nav_about",
+        "nav_experience",
         "nav_projects",
         "experience_heading",
         "education_heading",
@@ -435,9 +432,7 @@
         "photos",
         "previous_photo",
         "next_photo",
-        "photo_position",
-        "show_details",
-        "hide_details"
+        "photo_position"
       ]
     },
     "cursor_trail": {

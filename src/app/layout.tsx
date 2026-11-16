@@ -73,6 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               monogram={sidebar.monogram}
               nav={[
                 { href: "/", label: labels.nav_about },
+                { href: "/experience", label: labels.nav_experience },
                 { href: "/projects", label: labels.nav_projects },
               ]}
               links={sidebar.links}

@@ -92,6 +92,7 @@ export const contentSchema = z.object({
     .transform((v) => v ?? []),
   labels: z.object({
     nav_about: text,
+    nav_experience: text,
     nav_projects: text,
     experience_heading: text,
     education_heading: text,
@@ -113,8 +114,6 @@ export const contentSchema = z.object({
     previous_photo: text,
     next_photo: text,
     photo_position: text,
-    show_details: text,
-    hide_details: text,
   }),
   cursor_trail: z.object({
     enabled: z.boolean(),

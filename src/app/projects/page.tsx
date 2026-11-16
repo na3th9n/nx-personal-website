@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: labels.projects_heading };
 
 export default function ProjectsPage() {
   return (
-    <div className="projects">
+    <div className="page projects">
       <h1 className="page-title">{labels.projects_heading}</h1>
       {content.projects.length > 0 && (
         <ul className="rows">

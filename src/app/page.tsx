@@ -1,9 +1,8 @@
 import { NameHeader, type NameFont } from "@/components/NameHeader";
-import { Collapsible } from "@/components/Collapsible";
 import { PhotoSlideshow } from "@/components/PhotoSlideshow";
-import { Pills, Row } from "@/components/Row";
+import { Row } from "@/components/Row";
 import { content, nameFontsHref, photos, SITE_FONTS } from "@/lib/content";
-import { externalProps, Inline } from "@/lib/inline";
+import { Inline } from "@/lib/inline";
 
 const { site, labels, name_fonts } = content;
 
@@ -24,40 +23,39 @@ export default function AboutPage() {
   return (
     <div className="about-wrap">
       <div className={hasPhotos ? "about" : "about no-photos"}>
-        <div className="hero-text">
-          <header className="hero-head">
-            <NameHeader
-              name={site.name}
-              fonts={fonts}
-              href={nameFontsHref()}
-              size={name_fonts.size}
-              enabled={name_fonts.enabled}
-              holdMs={Math.round(name_fonts.hold_seconds * 1000)}
-              typeMs={name_fonts.type_ms}
-              deleteMs={name_fonts.delete_ms}
-              cursor={name_fonts.cursor}
-            />
-            <p className="subtitle">
-              <Inline text={site.subtitle} />
-            </p>
-          </header>
-          <ul className="intro">
-            {content.intro.map((line, i) => (
-              <li key={i}>
-                <Inline text={line} />
-              </li>
-            ))}
-            <li>
-              {labels.email_prefix} <a href={`mailto:${content.email}`}>{content.email}</a>.
-              {content.email_note ? (
-                <>
-                  {" "}
-                  <Inline text={content.email_note} />
-                </>
-              ) : null}
+        <header className="hero-head">
+          <NameHeader
+            name={site.name}
+            fonts={fonts}
+            href={nameFontsHref()}
+            size={name_fonts.size}
+            enabled={name_fonts.enabled}
+            holdMs={Math.round(name_fonts.hold_seconds * 1000)}
+            typeMs={name_fonts.type_ms}
+            deleteMs={name_fonts.delete_ms}
+            cursor={name_fonts.cursor}
+          />
+          <p className="subtitle">
+            <Inline text={site.subtitle} />
+          </p>
+        </header>
+
+        <ul className="intro">
+          {content.intro.map((line, i) => (
+            <li key={i}>
+              <Inline text={line} />
             </li>
-          </ul>
-        </div>
+          ))}
+          <li>
+            {labels.email_prefix} <a href={`mailto:${content.email}`}>{content.email}</a>.
+            {content.email_note ? (
+              <>
+                {" "}
+                <Inline text={content.email_note} />
+              </>
+            ) : null}
+          </li>
+        </ul>
 
         {hasPhotos && (
           <PhotoSlideshow
@@ -71,77 +69,27 @@ export default function AboutPage() {
           />
         )}
 
-        <div className="experience">
-          {content.experience.length > 0 && (
-            <section aria-labelledby="experience-heading">
-              <h2 className="label" id="experience-heading">
-                {labels.experience_heading}
-              </h2>
-              <ul className="rows">
-                {content.experience.map((job, i) => {
-                  const title = (
-                    <h3 className="row-title">
-                      {job.title} ·{" "}
-                      {job.company_url ? (
-                        <a href={job.company_url} {...externalProps(job.company_url)}>
-                          {job.company}
-                        </a>
-                      ) : (
-                        job.company
-                      )}
-                    </h3>
-                  );
-                  const hasDetails = Boolean(job.summary) || job.stack.length > 0;
-                  return (
-                    <Row key={i} when={job.dates}>
-                      {hasDetails ? (
-                        <Collapsible
-                          head={title}
-                          showLabel={labels.show_details}
-                          hideLabel={labels.hide_details}
-                        >
-                          {job.summary && (
-                            <p className="row-desc">
-                              <Inline text={job.summary} />
-                            </p>
-                          )}
-                          <Pills items={job.stack} />
-                        </Collapsible>
-                      ) : (
-                        title
-                      )}
-                    </Row>
-                  );
-                })}
-              </ul>
-            </section>
-          )}
-
-          {content.education.length > 0 && (
-            <section aria-labelledby="education-heading">
-              <h2
-                className={content.experience.length ? "label spaced" : "label"}
-                id="education-heading"
-              >
-                {labels.education_heading}
-              </h2>
-              <ul className="rows">
-                {content.education.map((ed, i) => (
-                  <Row key={i} when={ed.dates}>
-                    <h3 className="row-title">
-                      {ed.title} · {ed.school}
-                    </h3>
-                    {ed.summary && (
-                      <p className="row-desc">
-                        <Inline text={ed.summary} />
-                      </p>
-                    )}
-                  </Row>
-                ))}
-              </ul>
-            </section>
-          )}
-        </div>
+        {content.education.length > 0 && (
+          <section className="about-more" aria-labelledby="education-heading">
+            <h2 className="label" id="education-heading">
+              {labels.education_heading}
+            </h2>
+            <ul className="rows">
+              {content.education.map((ed, i) => (
+                <Row key={i} when={ed.dates}>
+                  <h3 className="row-title">
+                    {ed.title} · {ed.school}
+                  </h3>
+                  {ed.summary && (
+                    <p className="row-desc">
+                      <Inline text={ed.summary} />
+                    </p>
+                  )}
+                </Row>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
   );
