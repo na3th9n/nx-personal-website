@@ -44,7 +44,7 @@ Judgment calls made while building from the v5 plan and the mockup.
   viewport with the sidebar expanded, a 300px photo column plus a 56px gap
   leaves too little room for the name. The About grid uses a container query
   (`.about-wrap`) and moves the photo above the text when the content column
-  is under 780px wide. That covers mobile, tablets and the expanded sidebar.
+  is narrow (780px originally, 680px after the size reduction). That covers mobile, tablets and the expanded sidebar.
 - Name sizes scale with the text column (`min(<size>px, <size>/640 × 100cqi)`).
   640px is the text column width at 1440px with the sidebar expanded. The
   fixed-height name box scales the same way, so nothing below it moves.
@@ -54,6 +54,30 @@ Judgment calls made while building from the v5 plan and the mockup.
 - Styling is mostly hand-written CSS classes in `globals.css`, mirroring the
   mockup's structure, with Tailwind v4 for the reset, the `dark` variant and
   `sr-only`. That kept the build close to the approved mockup.
+
+## Revision 1 (smaller sizing, same-size name, collapsible jobs)
+
+- **About 20–25% smaller overall:**
+  - sidebar 300 → 240px, rail 72 → 64px
+  - nav 34 → 26px, body 21 → 17.5px, row titles 21 → 17px
+  - page title 64 → 48px, photo frame 300×375 → 240×300
+  - main padding 72 → 56px, About max width 1000 → 880px
+  The About grid now stacks below a 680px content column.
+- **One name size instead of one per font.** `name_fonts.size` (76) sets the
+  first font. The others are scaled so their capital letters are equally
+  tall, measured in the browser after the fonts load, at the rendered size
+  (Newsreader is a variable font whose proportions change with size).
+  Equal *width* was tried first, but it made narrow fonts like Instrument
+  Serif about 50% taller.
+- Wide fonts are capped at 1.6× the first font's width so they always fit
+  the column. Silkscreen, a very wide pixel font, hits that cap and renders
+  at about 94% of the others' height.
+- **Experience rows collapse.** Only dates and Role · Company show, with a
+  "More details" button (`aria-expanded`). The summary and pills slide open
+  with a grid-rows transition. Collapsed details stay in the HTML for
+  search engines but are `inert`, so Tab skips them. Education rows stay
+  open, since there's only one.
+- Added Instagram, TikTok and YouTube to the sidebar links.
 
 ## Theme and sidebar
 

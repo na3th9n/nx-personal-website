@@ -33,6 +33,12 @@ sidebar:
       url: https://github.com/na3th9n
     - label: LinkedIn
       url: https://www.linkedin.com/in/nathanxie/
+    - label: Instagram
+      url: https://www.instagram.com/yungnate02/
+    - label: TikTok
+      url: https://www.tiktok.com/@yungnate02
+    - label: YouTube
+      url: https://www.youtube.com/@yungnate02
     - label: Résumé
       url: /resume.pdf
 
@@ -42,9 +48,10 @@ sidebar:
 #  The email bullet is added automatically at the end (see below).
 # ------------------------------------------------------------
 intro:
-  - TODO
-  - TODO
-  - TODO
+  - I graduated from the University of Waterloo and stuided Mechatronics Engineering
+  - I specialize in fullstack development. I am also self-learning systems engineering to better understand computers
+  - Currently training for an Ironman and bodybuidling (all documentation of my journey is on Instagram, Tiktok, and Youtube)
+  - I like the idea of books. Currently "reading:" Republic by Plato
 
 # The last bullet always reads:  My email is <email>. <email_note>
 email: na3than.xie@gmail.com
@@ -74,6 +81,8 @@ photos:
 #  ABOUT PAGE — EXPERIENCE (newest first)
 #  To add a job: copy one whole block (from "- dates" to the
 #  end of its "stack" line) and paste it where it should go.
+#  Only the dates, title and company show at first; the summary
+#  and "stack" pills appear when someone clicks "More details".
 #  "stack" = the pills under the job. Remove the line for none.
 #  "company_url" (optional) makes the company name a link.
 # ------------------------------------------------------------
@@ -179,6 +188,8 @@ labels:
   previous_photo: Previous photo
   next_photo: Next photo
   photo_position: Photo {n} of {total} # {n} and {total} are filled in for you
+  show_details: More details # button that opens a job's description
+  hide_details: Less details # same button once it's open
 
 # ------------------------------------------------------------
 #  CURSOR TRAIL
@@ -206,7 +217,9 @@ cursor_trail:
 #  and retyped in the next font in this list, in a loop.
 #  "font" must be the exact name of a Google Font (fonts.google.com).
 #  The first one is what shows if animation is turned off.
-#  Adjust "size" if a font looks too big or too small.
+#  Every font is scaled so its letters are as tall as the first
+#  one's, so your name stays the same size in every style.
+#  "size" sets that size.
 # ------------------------------------------------------------
 name_fonts:
   enabled: true
@@ -214,9 +227,10 @@ name_fonts:
   type_ms: 80 # time per letter when typing
   delete_ms: 50 # time per letter when deleting
   cursor: block # block (█) or bar (|)
+  size: 76 # the name's size in pixels on a wide screen
   fonts:
-    - { font: Newsreader, weight: 300, italic: false, size: 104, tracking: -0.02 }
-    - { font: Instrument Serif, weight: 400, italic: true, size: 112, tracking: -0.01 }
-    - { font: Space Mono, weight: 700, italic: false, size: 72, tracking: -0.04 }
-    - { font: Bricolage Grotesque, weight: 800, italic: false, size: 92, tracking: -0.04 }
-    - { font: Silkscreen, weight: 400, italic: false, size: 64, tracking: 0 }
+    - { font: Newsreader, weight: 300, italic: false, tracking: -0.02 }
+    - { font: Instrument Serif, weight: 400, italic: true, tracking: -0.01 }
+    - { font: Space Mono, weight: 700, italic: false, tracking: -0.04 }
+    - { font: Bricolage Grotesque, weight: 800, italic: false, tracking: -0.04 }
+    - { font: Silkscreen, weight: 400, italic: false, tracking: 0 }
