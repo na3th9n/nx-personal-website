@@ -1,4 +1,5 @@
 import { NameHeader, type NameFont } from "@/components/NameHeader";
+import { Collapsible } from "@/components/Collapsible";
 import { PhotoSlideshow } from "@/components/PhotoSlideshow";
 import { Pills, Row } from "@/components/Row";
 import { content, nameFontsHref, photos, SITE_FONTS } from "@/lib/content";
@@ -14,7 +15,6 @@ const fonts: NameFont[] = name_fonts.fonts.map((f) => {
     load: own ?? quoted,
     weight: f.weight,
     italic: f.italic,
-    size: f.size,
     tracking: f.tracking,
   };
 });
@@ -30,6 +30,7 @@ export default function AboutPage() {
               name={site.name}
               fonts={fonts}
               href={nameFontsHref()}
+              size={name_fonts.size}
               enabled={name_fonts.enabled}
               holdMs={Math.round(name_fonts.hold_seconds * 1000)}
               typeMs={name_fonts.type_ms}
@@ -77,8 +78,8 @@ export default function AboutPage() {
                 {labels.experience_heading}
               </h2>
               <ul className="rows">
-                {content.experience.map((job, i) => (
-                  <Row key={i} when={job.dates}>
+                {content.experience.map((job, i) => {
+                  const title = (
                     <h3 className="row-title">
                       {job.title} ·{" "}
                       {job.company_url ? (
@@ -89,14 +90,29 @@ export default function AboutPage() {
                         job.company
                       )}
                     </h3>
-                    {job.summary && (
-                      <p className="row-desc">
-                        <Inline text={job.summary} />
-                      </p>
-                    )}
-                    <Pills items={job.stack} />
-                  </Row>
-                ))}
+                  );
+                  const hasDetails = Boolean(job.summary) || job.stack.length > 0;
+                  return (
+                    <Row key={i} when={job.dates}>
+                      {hasDetails ? (
+                        <Collapsible
+                          head={title}
+                          showLabel={labels.show_details}
+                          hideLabel={labels.hide_details}
+                        >
+                          {job.summary && (
+                            <p className="row-desc">
+                              <Inline text={job.summary} />
+                            </p>
+                          )}
+                          <Pills items={job.stack} />
+                        </Collapsible>
+                      ) : (
+                        title
+                      )}
+                    </Row>
+                  );
+                })}
               </ul>
             </section>
           )}
