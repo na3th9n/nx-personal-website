@@ -14,8 +14,8 @@
   --serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  --sidebar-w: 300px;
-  --rail-w: 72px;
+  --sidebar-w: 240px;
+  --rail-w: 64px;
   color-scheme: light;
 }
 
@@ -106,7 +106,7 @@ button {
 .main {
   flex: 1;
   min-width: 0;
-  padding: 72px 72px 96px;
+  padding: 56px 56px 80px;
 }
 
 /* ---------- sidebar ---------- */
@@ -131,7 +131,7 @@ html[data-sidebar="collapsed"] .sidebar {
 .sb-expanded {
   width: var(--sidebar-w);
   height: 100%;
-  padding: 64px 40px 48px 72px;
+  padding: 48px 28px 40px 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -140,7 +140,7 @@ html[data-sidebar="collapsed"] .sidebar {
 .sb-rail {
   width: var(--rail-w);
   height: 100%;
-  padding: 56px 14px 40px;
+  padding: 44px 10px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,7 +163,7 @@ html.sb-anim .sb-rail {
 .sb-top {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 36px;
 }
 .sb-head {
   display: flex;
@@ -172,7 +172,7 @@ html.sb-anim .sb-rail {
 }
 .monogram {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-decoration: none;
@@ -199,13 +199,13 @@ html.sb-anim .sb-rail {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
+  gap: 2px;
 }
 .nav a {
   font-family: var(--serif);
-  font-size: 34px;
+  font-size: 26px;
   line-height: 1.2;
-  padding: 4px 0;
+  padding: 3px 0;
   color: var(--muted);
   text-decoration: none;
 }
@@ -222,15 +222,15 @@ html.sb-anim .sb-rail {
 .sb-bottom {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 12px;
 }
 .side-links {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 6px;
 }
 .side-links a {
   color: var(--muted);
@@ -246,21 +246,22 @@ html.sb-anim .sb-rail {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: 36px;
   background: transparent;
   border: 1px solid var(--rule);
   border-radius: 999px;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 12px;
 }
 .theme-pill {
-  gap: 10px;
+  gap: 8px;
   width: fit-content;
-  padding: 0 14px 0 12px;
+  padding: 0 12px 0 10px;
 }
 .theme-round {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
 }
 .theme-pill:hover,
 .theme-round:hover {
@@ -281,7 +282,7 @@ html.sb-anim .sb-rail {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
 }
 .rail-nav {
   display: flex;
@@ -293,7 +294,7 @@ html.sb-anim .sb-rail {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 17px;
   padding: 6px 0;
   color: var(--muted);
   text-decoration: none;
@@ -305,9 +306,9 @@ html.sb-anim .sb-rail {
 
 /* ---------- section labels, rows, pills ---------- */
 .label {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -321,22 +322,22 @@ html.sb-anim .sb-rail {
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 32px;
-  padding: 20px 0;
+  gap: 4px 24px;
+  padding: 14px 0;
   border-top: 1px solid var(--rule);
 }
 .row:last-child {
   border-bottom: 1px solid var(--rule);
 }
 .row-when {
-  flex: 0 0 var(--when-w, 140px);
-  padding-top: 5px;
+  flex: 0 0 var(--when-w, 116px);
+  padding-top: 3px;
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 12.5px;
   color: var(--muted);
 }
 .row-what {
-  flex: 1 1 360px;
+  flex: 1 1 320px;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -344,7 +345,7 @@ html.sb-anim .sb-rail {
 }
 .row-title {
   margin: 0;
-  font-size: 21px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.35;
 }
@@ -353,38 +354,96 @@ html.sb-anim .sb-rail {
 }
 .row-desc {
   margin: 0;
-  font-size: 18px;
+  font-size: 15.5px;
   line-height: 1.55;
   color: var(--body);
 }
 .pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   margin: 0;
-  padding: 4px 0 0;
+  padding: 2px 0 0;
   list-style: none;
 }
 .pill {
-  padding: 3px 10px;
+  padding: 1px 8px;
   border: 1px solid var(--rule);
   border-radius: 999px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 18px;
   color: var(--muted);
 }
 
+/* collapsible experience rows */
+.row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  flex-wrap: wrap;
+}
+.more-btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+  margin: -4px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.more-btn:hover {
+  color: var(--ink);
+}
+.more-btn svg {
+  transition: transform 200ms ease;
+}
+.more-btn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.row-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 250ms ease,
+    opacity 200ms ease;
+}
+.row-more[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.row-more-inner {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.row-more-inner > :first-child {
+  margin-top: 4px;
+}
+.row-what:has(.row-more) {
+  gap: 0;
+}
+
 /* ---------- about ---------- */
 .about-wrap {
-  max-width: 1000px;
+  max-width: 880px;
   container: about / inline-size;
 }
 .about {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
-  column-gap: 56px;
-  row-gap: 56px;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  column-gap: 48px;
+  row-gap: 44px;
   align-items: start;
 }
 .about.no-photos {
@@ -394,17 +453,17 @@ html.sb-anim .sb-rail {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   container: hero / inline-size;
 }
 .hero-head {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 /* Fixed-height box: typing, deleting and font swaps never move anything below */
 .name-box {
-  height: min(108px, 16.875cqi);
+  height: min(84px, 14.24cqi);
   display: flex;
   align-items: flex-end;
 }
@@ -440,17 +499,17 @@ html.sb-anim .sb-rail {
 .subtitle {
   margin: 0;
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: 13.5px;
   color: var(--muted);
 }
 .intro {
   margin: 0;
-  padding-left: 24px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   list-style: disc;
-  font-size: 21px;
+  font-size: 17.5px;
   line-height: 1.55;
   color: var(--body);
 }
@@ -469,23 +528,23 @@ html.sb-anim .sb-rail {
   min-width: 0;
 }
 .experience .label.spaced {
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 /* photo slideshow */
 .photos {
   grid-column: 2;
   grid-row: 1;
-  width: 300px;
-  margin: 8px 0 0;
+  width: 240px;
+  margin: 6px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .frame {
   position: relative;
-  width: 300px;
-  height: 375px;
+  width: 240px;
+  height: 300px;
   overflow: hidden;
   background: var(--frame);
 }
@@ -541,7 +600,7 @@ html.sb-anim .sb-rail {
   justify-content: space-between;
   gap: 16px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 18px;
   color: var(--muted);
 }
@@ -557,17 +616,17 @@ html.sb-anim .sb-rail {
 }
 
 /* Stack the photo above the text when the content column gets narrow */
-@container about (max-width: 779px) {
+@container about (max-width: 679px) {
   .about {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 40px;
+    row-gap: 32px;
   }
   .photos {
     grid-column: 1;
     grid-row: auto;
     order: -1;
     width: 100%;
-    max-width: 360px;
+    max-width: 300px;
     margin: 0;
   }
   .frame {
@@ -582,39 +641,39 @@ html.sb-anim .sb-rail {
 
 /* ---------- projects ---------- */
 .projects {
-  max-width: 720px;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 36px;
 }
 .page-title {
   margin: 0;
   font-weight: 300;
-  font-size: 64px;
+  font-size: 48px;
   line-height: 1;
   letter-spacing: -0.02em;
 }
 .projects .row {
-  --when-w: 80px;
-  padding: 24px 0;
+  --when-w: 64px;
+  padding: 18px 0;
 }
 .projects .row-when {
-  padding-top: 6px;
+  padding-top: 4px;
 }
 .projects .row-what {
-  flex-basis: 400px;
-  gap: 8px;
+  flex-basis: 360px;
+  gap: 6px;
 }
 .projects .row-title {
-  font-size: 24px;
+  font-size: 19px;
 }
 .proj-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px 16px;
+  gap: 6px 14px;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 12px;
 }
 .proj-meta .pills {
   padding: 0;
@@ -624,7 +683,7 @@ html.sb-anim .sb-rail {
 }
 .status {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
 }
 
@@ -637,7 +696,7 @@ html.sb-anim .sb-rail {
 }
 .not-found a {
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: 14px;
 }
 
 /* ---------- fx ---------- */
@@ -653,7 +712,7 @@ html.sb-anim .sb-rail {
 /* ---------- tablet ---------- */
 @media (min-width: 768px) and (max-width: 1099px) {
   .main {
-    padding: 56px 48px 80px;
+    padding: 44px 40px 64px;
   }
 }
 
@@ -685,8 +744,8 @@ html.sb-anim .sb-rail {
   .sb-expanded {
     width: auto;
     height: auto;
-    padding: 20px 24px;
-    gap: 16px;
+    padding: 16px 20px;
+    gap: 12px;
   }
   .sb-top {
     gap: 12px;
@@ -703,15 +762,15 @@ html.sb-anim .sb-rail {
     gap: 20px;
   }
   .nav a {
-    font-size: 24px;
+    font-size: 21px;
   }
   .sb-bottom {
     position: absolute;
-    top: 20px;
-    right: 24px;
+    top: 16px;
+    right: 20px;
   }
   .main {
-    padding: 32px 24px 48px;
+    padding: 28px 20px 44px;
   }
   .mobile-footer {
     display: flex;
@@ -721,17 +780,17 @@ html.sb-anim .sb-rail {
     padding-top: 20px;
     border-top: 1px solid var(--rule);
     font-family: var(--sans);
-    font-size: 13px;
+    font-size: 12px;
   }
   .mobile-footer a {
     color: var(--muted);
     text-decoration: none;
   }
   .page-title {
-    font-size: 48px;
+    font-size: 40px;
   }
   .intro {
-    font-size: 19px;
+    font-size: 16.5px;
   }
 }
 
