@@ -24,7 +24,8 @@ site:
 # ------------------------------------------------------------
 #  SIDEBAR
 #  Links at the bottom of the sidebar. Remove a line to hide it.
-#  Put your résumé PDF in the "public" folder and name it resume.pdf.
+#  Your résumé is the PDF in the "public" folder; the Résumé link
+#  below must match its file name.
 # ------------------------------------------------------------
 sidebar:
   monogram: NX
@@ -40,7 +41,7 @@ sidebar:
     - label: YouTube
       url: https://www.youtube.com/@yungnate02
     - label: Résumé
-      url: /resume.pdf
+      url: /nathan-xie-resume.pdf
 
 # ------------------------------------------------------------
 #  ABOUT PAGE — INTRO BULLETS
@@ -48,9 +49,9 @@ sidebar:
 #  The email bullet is added automatically at the end (see below).
 # ------------------------------------------------------------
 intro:
-  - I graduated from the University of Waterloo and stuided Mechatronics Engineering
+  - I graduated from the University of Waterloo and studied Mechatronics Engineering
   - I specialize in fullstack development. I am also self-learning systems engineering to better understand computers
-  - Currently training for an Ironman and bodybuidling (all documentation of my journey is on Instagram, Tiktok, and Youtube)
+  - Currently training for an Ironman and bodybuilding (all documentation of my journey is on Instagram, TikTok, and YouTube)
   - "I like the idea of books. Currently reading: Republic by Plato"
 
 # The last bullet always reads:  My email is <email>. <email_note>

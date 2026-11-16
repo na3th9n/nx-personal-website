@@ -125,8 +125,11 @@ Judgment calls made while building from the v5 plan and the mockup.
 
 - `priority` on `next/image` is deprecated in Next 16, so the first slide uses
   `preload`. The next slide gets `loading="eager"`.
-- Placeholder photos are SVGs. Next serves `.svg` sources unoptimized
-  automatically.
+- The original placeholder photos were SVGs, which Next serves
+  unoptimized automatically. They've since been replaced by real JPEGs, which
+  `next/image` resizes and serves as WebP/AVIF.
+- The résumé lives at `public/nathan-xie-resume.pdf`, and the sidebar link
+  points to it.
 - The favicon is `src/app/icon.svg` (Next's file convention), not
   `public/icon.svg`.
 

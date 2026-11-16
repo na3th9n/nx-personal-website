@@ -44,8 +44,10 @@ any other file.
      name (for example `me-at-the-beach.jpg`) and update its `alt` and `caption`.
   Any size or shape works; photos are cropped to fit the frame. If the wrong
   part gets cropped, add a line like `focus: 50% 20%` to keep the top.
-- **Replace the résumé:** upload your PDF to the `public/` folder named exactly
-  `resume.pdf`, replacing the placeholder.
+- **Replace the résumé:** upload your new PDF to the `public/` folder with the
+  same name as the current one (`nathan-xie-resume.pdf`) so it replaces it. If
+  you use a different name, update the Résumé `url:` in `content.yaml` to match
+  and delete the old PDF.
 - **Bold and links:** write `**bold**` or `[link text](https://example.com)` in
   any text.
 
