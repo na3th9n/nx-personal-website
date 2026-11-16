@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 export type NameFont = {
   family: string; // CSS font-family value (may be a var(--…) for site fonts)
   load: string; // family name passed to document.fonts.load (or a var)
   weight: number;
   italic: boolean;
-  size: number; // desktop px
   tracking: number; // em
 };
 
@@ -15,6 +14,7 @@ type Props = {
   name: string;
   fonts: NameFont[];
   href: string | null; // Google Fonts stylesheet, subset to the name's letters
+  size: number; // desktop px for the first font; others match its width
   enabled: boolean;
   holdMs: number;
   typeMs: number;
@@ -22,15 +22,16 @@ type Props = {
   cursor: "block" | "bar";
 };
 
-// Sizes are tuned for a ~640px text column; scale down with the column.
-const DESIGN_WIDTH = 640;
+// The size is tuned for a ~590px text column; scale down with the column.
+const DESIGN_WIDTH = 590;
 
-function fontStyle(f: NameFont): CSSProperties {
+function fontStyle(f: NameFont, size: number, ratio: number): CSSProperties {
+  const base = `min(${size}px, ${((size / DESIGN_WIDTH) * 100).toFixed(3)}cqi)`;
   return {
     fontFamily: f.family,
     fontWeight: f.weight,
     fontStyle: f.italic ? "italic" : "normal",
-    fontSize: `min(${f.size}px, ${((f.size / DESIGN_WIDTH) * 100).toFixed(3)}cqi)`,
+    fontSize: ratio === 1 ? base : `calc(${base} * ${ratio.toFixed(4)})`,
     letterSpacing: `${f.tracking}em`,
   };
 }
@@ -55,10 +56,42 @@ function loadStylesheet(href: string) {
   });
 }
 
+// Scale every font so its capital letters are as tall as the first font's,
+// which is what reads as "the same size" (fonts differ a lot in proportions).
+// Width is capped so wide fonts can't outgrow the first one by more than 60% (so they still fit).
+const MAX_WIDTH_RATIO = 1.6;
+
+function measureRatios(text: string, fonts: NameFont[], px: number): number[] {
+  const ctx = document.createElement("canvas").getContext("2d");
+  if (!ctx) return fonts.map(() => 1);
+  const capital = [...text].find((ch) => /\p{Lu}/u.test(ch)) ?? text[0];
+  const metrics = fonts.map((f) => {
+    // Measure at the real rendered size: variable fonts (Newsreader's optical
+    // size axis) change proportions with size.
+    ctx.font = `${f.italic ? "italic " : ""}${f.weight} ${px}px ${resolveFamily(f.load)}`;
+    ctx.letterSpacing = `${f.tracking * px}px`;
+    return {
+      // The name fonts are subset to the name's letters, so measure a capital
+      // from the name itself (the first letter), not a fixed "H".
+      cap: ctx.measureText(capital).actualBoundingBoxAscent,
+      width: ctx.measureText(text).width,
+    };
+  });
+  const [first] = metrics;
+  return metrics.map(({ cap, width }) => {
+    if (!(cap > 0 && width > 0)) return 1;
+    const byHeight = first.cap / cap;
+    const widthCap = (first.width * MAX_WIDTH_RATIO) / width;
+    return Math.max(0.5, Math.min(byHeight, widthCap, 1.6));
+  });
+}
+
 export function NameHeader(p: Props) {
   const { name, fonts } = p;
   const [fontIndex, setFontIndex] = useState(0);
   const [shown, setShown] = useState(name.length);
+  const [ratios, setRatios] = useState<number[] | null>(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     if (!p.enabled || fonts.length < 2) return;
@@ -131,6 +164,9 @@ export function NameHeader(p: Props) {
       } catch {
         return; // fonts unavailable: keep the static name
       }
+      if (cancelled) return;
+      const px = h1Ref.current ? parseFloat(getComputedStyle(h1Ref.current).fontSize) : 0;
+      if (px > 0) setRatios(measureRatios(name, fonts, px));
       schedule(p.holdMs);
     };
     const raf = requestAnimationFrame(() => void start());
@@ -145,7 +181,7 @@ export function NameHeader(p: Props) {
 
   return (
     <div className="name-box">
-      <h1 className="name" aria-label={name} style={fontStyle(fonts[fontIndex])}>
+      <h1 ref={h1Ref} className="name" aria-label={name} style={fontStyle(fonts[fontIndex], p.size, ratios?.[fontIndex] ?? 1)}>
         <span aria-hidden="true">{name.slice(0, shown)}</span>
         {p.enabled && (
           <span

@@ -403,6 +403,14 @@
         "photo_position": {
           "type": "string",
           "minLength": 1
+        },
+        "show_details": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hide_details": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "required": [
@@ -427,7 +435,9 @@
         "photos",
         "previous_photo",
         "next_photo",
-        "photo_position"
+        "photo_position",
+        "show_details",
+        "hide_details"
       ]
     },
     "cursor_trail": {
@@ -520,6 +530,11 @@
             "bar"
           ]
         },
+        "size": {
+          "type": "number",
+          "minimum": 16,
+          "maximum": 200
+        },
         "fonts": {
           "minItems": 1,
           "type": "array",
@@ -540,18 +555,13 @@
                 "default": false,
                 "type": "boolean"
               },
-              "size": {
-                "type": "number",
-                "exclusiveMinimum": 0
-              },
               "tracking": {
                 "default": 0,
                 "type": "number"
               }
             },
             "required": [
-              "font",
-              "size"
+              "font"
             ]
           }
         }
@@ -562,6 +572,7 @@
         "type_ms",
         "delete_ms",
         "cursor",
+        "size",
         "fonts"
       ]
     }

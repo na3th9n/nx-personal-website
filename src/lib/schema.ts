@@ -56,7 +56,6 @@ const nameFont = z.object({
   font: text,
   weight: z.number().int().min(100).max(900).default(400),
   italic: z.boolean().default(false),
-  size: z.number().positive(),
   tracking: z.number().default(0),
 });
 
@@ -114,6 +113,8 @@ export const contentSchema = z.object({
     previous_photo: text,
     next_photo: text,
     photo_position: text,
+    show_details: text,
+    hide_details: text,
   }),
   cursor_trail: z.object({
     enabled: z.boolean(),
@@ -132,6 +133,7 @@ export const contentSchema = z.object({
     type_ms: z.number().int().min(10),
     delete_ms: z.number().int().min(10),
     cursor: z.enum(["block", "bar"]),
+    size: z.number().min(16).max(200),
     fonts: z.array(nameFont).min(1),
   }),
 });
