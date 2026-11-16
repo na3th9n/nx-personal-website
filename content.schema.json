@@ -187,49 +187,6 @@
         }
       ]
     },
-    "education": {
-      "anyOf": [
-        {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "dates": {
-                "anyOf": [
-                  {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  {
-                    "type": "number"
-                  }
-                ]
-              },
-              "title": {
-                "type": "string",
-                "minLength": 1
-              },
-              "school": {
-                "type": "string",
-                "minLength": 1
-              },
-              "summary": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "dates",
-              "title",
-              "school"
-            ]
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
     "projects": {
       "anyOf": [
         {
@@ -313,6 +270,36 @@
         }
       ]
     },
+    "pill_colors": {
+      "anyOf": [
+        {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "enum": [
+              "blue",
+              "sky",
+              "indigo",
+              "purple",
+              "pink",
+              "red",
+              "orange",
+              "yellow",
+              "lime",
+              "green",
+              "teal",
+              "gray"
+            ]
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "labels": {
       "type": "object",
       "properties": {
@@ -329,10 +316,6 @@
           "minLength": 1
         },
         "experience_heading": {
-          "type": "string",
-          "minLength": 1
-        },
-        "education_heading": {
           "type": "string",
           "minLength": 1
         },
@@ -414,7 +397,6 @@
         "nav_experience",
         "nav_projects",
         "experience_heading",
-        "education_heading",
         "projects_heading",
         "email_prefix",
         "live_link",

@@ -51,7 +51,7 @@ intro:
   - I graduated from the University of Waterloo and stuided Mechatronics Engineering
   - I specialize in fullstack development. I am also self-learning systems engineering to better understand computers
   - Currently training for an Ironman and bodybuidling (all documentation of my journey is on Instagram, Tiktok, and Youtube)
-  - I like the idea of books. Currently "reading:" Republic by Plato
+  - "I like the idea of books. Currently reading: Republic by Plato"
 
 # The last bullet always reads:  My email is <email>. <email_note>
 email: na3than.xie@gmail.com
@@ -67,15 +67,18 @@ email_note: Contact me for anything :)
 #  Remove all photos to hide the slideshow.
 # ------------------------------------------------------------
 photos:
-  - file: placeholder-1.svg
-    alt: TODO describe the photo for screen readers
-    caption: TODO
-  - file: placeholder-2.svg
-    alt: TODO
-    caption: TODO
-  - file: placeholder-3.svg
-    alt: TODO
-    caption: TODO
+  - file: IMG_1040.jpeg
+    alt: Nathan biting his finisher's medal in front of the TCS Toronto Waterfront Marathon backdrop
+    caption: Toronto Waterfront Marathon 2025
+    focus: 55% 35%
+  - file: IMG_7697.JPG
+    alt: Nathan in his graduation gown holding a University of Waterloo diploma folder, standing between his parents
+    caption: Graduating from Waterloo
+    focus: 50% 65%
+  - file: IMG_8402.JPG
+    alt: Nathan and four friends on a rocky summit holding a Vietnamese flag, with green karst mountains behind them
+    caption: Hiking in Vietnam
+    focus: 50% 70%
 
 # ------------------------------------------------------------
 #  EXPERIENCE PAGE (newest first)
@@ -128,15 +131,6 @@ experience:
     stack: [Python]
 
 # ------------------------------------------------------------
-#  ABOUT PAGE — EDUCATION
-# ------------------------------------------------------------
-education:
-  - dates: 2021 – 2026
-    title: BASc Engineering
-    school: University of Waterloo
-    summary: TODO
-
-# ------------------------------------------------------------
 #  PROJECTS PAGE (newest first)
 #  "live" and "source" are optional links; delete a line to hide that link.
 #  "live_label" / "source_label" (optional) change the link text.
@@ -159,6 +153,30 @@ projects:
     source: https://github.com/na3th9n/TODO
 
 # ------------------------------------------------------------
+#  PILL COLOURS (the stack pills on the Experience page)
+#  Which pastel colour each language / framework gets.
+#  Colours: blue, sky, indigo, purple, pink, red, orange,
+#           yellow, lime, green, teal, gray
+#  Anything not listed here stays plain.
+# ------------------------------------------------------------
+pill_colors:
+  TypeScript: blue
+  JavaScript: yellow
+  Python: teal
+  Ruby: red
+  SQL: gray
+  React: sky
+  React Native: sky
+  Redux: purple
+  Ruby on Rails: red
+  GraphQL: pink
+  Svelte: orange
+  PostgreSQL: indigo
+  MS SQL Server: gray
+  Node.js: green
+  MongoDB: lime
+
+# ------------------------------------------------------------
 #  LABELS (rarely changed)
 #  Every other bit of wording on the site.
 # ------------------------------------------------------------
@@ -167,7 +185,6 @@ labels:
   nav_experience: Experience
   nav_projects: Projects
   experience_heading: Experience
-  education_heading: Education
   projects_heading: Projects
   email_prefix: My email is
   live_link: Live

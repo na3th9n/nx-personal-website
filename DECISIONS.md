@@ -86,6 +86,26 @@ Judgment calls made while building from the v5 plan and the mockup.
   instead of the name. When the column stacks on narrow screens, the photo
   still goes first.
 
+## Revision 3 (photos, pastel pills, About cleanup)
+
+- Education removed from About and from `content.yaml`/schema entirely.
+- The About photo is vertically centred on the intro bullets
+  (`align-self: center` on both, in the same grid row).
+- Real photos replace the placeholders, each with a `focus` point so faces
+  stay in the 4:5 crop. Captions and alt text are first drafts for Nathan
+  to edit.
+- **Experience spacing matches Projects.** Vertical padding was already the
+  same (18px rows), so this copies the horizontal rhythm: the date column
+  is 128px, which leaves the same ~57px between the dates and the role as
+  Projects leaves after the year. Titles are 19px on both pages.
+- **Pastel pills on Experience only.** `pill_colors` in `content.yaml` maps
+  each tech to one of 12 named colours (case-insensitive); unlisted techs
+  stay plain. Colours follow brand association where it's obvious
+  (TypeScript blue, JavaScript yellow, Ruby/Rails red, GraphQL pink, Svelte
+  orange, Node green), and same-row clashes are avoided otherwise. Dark mode
+  derives a deep tint and a light text colour from each hue, because the
+  light pastels washed out on the dark background.
+
 ## Theme and sidebar
 
 - The theme toggle's icon, text and screen-reader label switch with CSS

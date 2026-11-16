@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Pills, Row } from "@/components/Row";
-import { content } from "@/lib/content";
+import { content, pillColor } from "@/lib/content";
 import { externalProps, Inline } from "@/lib/inline";
 
 const { labels } = content;
@@ -30,7 +30,7 @@ export default function ExperiencePage() {
                   <Inline text={job.summary} />
                 </p>
               )}
-              <Pills items={job.stack} />
+              <Pills items={job.stack} colorOf={pillColor} />
             </Row>
           ))}
         </ul>

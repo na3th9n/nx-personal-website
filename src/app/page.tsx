@@ -1,6 +1,5 @@
 import { NameHeader, type NameFont } from "@/components/NameHeader";
 import { PhotoSlideshow } from "@/components/PhotoSlideshow";
-import { Row } from "@/components/Row";
 import { content, nameFontsHref, photos, SITE_FONTS } from "@/lib/content";
 import { Inline } from "@/lib/inline";
 
@@ -69,27 +68,6 @@ export default function AboutPage() {
           />
         )}
 
-        {content.education.length > 0 && (
-          <section className="about-more" aria-labelledby="education-heading">
-            <h2 className="label" id="education-heading">
-              {labels.education_heading}
-            </h2>
-            <ul className="rows">
-              {content.education.map((ed, i) => (
-                <Row key={i} when={ed.dates}>
-                  <h3 className="row-title">
-                    {ed.title} · {ed.school}
-                  </h3>
-                  {ed.summary && (
-                    <p className="row-desc">
-                      <Inline text={ed.summary} />
-                    </p>
-                  )}
-                </Row>
-              ))}
-            </ul>
-          </section>
-        )}
       </div>
     </div>
   );

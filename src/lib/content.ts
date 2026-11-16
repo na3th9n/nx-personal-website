@@ -108,6 +108,15 @@ export const photos = content.photos.map((p) => ({
 
 export type Photo = (typeof photos)[number];
 
+const pillColorMap = new Map(
+  Object.entries(content.pill_colors).map(([k, v]) => [k.trim().toLowerCase(), v]),
+);
+
+/** Pastel colour name for a stack pill (case-insensitive), if one is set. */
+export function pillColor(tech: string): string | undefined {
+  return pillColorMap.get(tech.trim().toLowerCase());
+}
+
 /** Fonts the site already self-hosts through next/font. */
 export const SITE_FONTS: Record<string, string> = {
   Newsreader: "var(--font-newsreader)",

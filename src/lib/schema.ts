@@ -29,13 +29,6 @@ const job = z.object({
   stack,
 });
 
-const school = z.object({
-  dates: z.union([text, z.number()]).transform(String),
-  title: text,
-  school: text,
-  summary: optionalText,
-});
-
 const project = z.object({
   year: z.union([text, z.number()]).transform(String),
   title: text,
@@ -58,6 +51,21 @@ const nameFont = z.object({
   italic: z.boolean().default(false),
   tracking: z.number().default(0),
 });
+
+export const PILL_COLORS = [
+  "blue",
+  "sky",
+  "indigo",
+  "purple",
+  "pink",
+  "red",
+  "orange",
+  "yellow",
+  "lime",
+  "green",
+  "teal",
+  "gray",
+] as const;
 
 export const contentSchema = z.object({
   site: z.object({ name: text, subtitle: text, description: text }),
@@ -82,20 +90,19 @@ export const contentSchema = z.object({
     .array(job)
     .nullish()
     .transform((v) => v ?? []),
-  education: z
-    .array(school)
-    .nullish()
-    .transform((v) => v ?? []),
   projects: z
     .array(project)
     .nullish()
     .transform((v) => v ?? []),
+  pill_colors: z
+    .record(z.string(), z.enum(PILL_COLORS))
+    .nullish()
+    .transform((v) => v ?? {}),
   labels: z.object({
     nav_about: text,
     nav_experience: text,
     nav_projects: text,
     experience_heading: text,
-    education_heading: text,
     projects_heading: text,
     email_prefix: text,
     live_link: text,
