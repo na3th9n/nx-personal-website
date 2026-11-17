@@ -106,6 +106,14 @@ Judgment calls made while building from the v5 plan and the mockup.
   derives a deep tint and a light text colour from each hue, because the
   light pastels washed out on the dark background.
 
+## Revision 4 (centred content)
+
+- On wide screens the content column is centred in the space to the right of
+  the sidebar (`margin-inline: auto` on `.about-wrap` and `.page`). Before,
+  it sat against the left edge. About (880px) and Experience/Projects
+  (640px) each centre on their own width. Below about 1000px the column
+  fills the available space, so nothing changes there.
+
 ## Theme and sidebar
 
 - The theme toggle's icon, text and screen-reader label switch with CSS

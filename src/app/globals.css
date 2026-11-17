@@ -404,6 +404,7 @@ html.sb-anim .sb-rail {
 /* ---------- about ---------- */
 .about-wrap {
   max-width: 880px;
+  margin-inline: auto;
   container: about / inline-size;
 }
 .about {
@@ -605,6 +606,7 @@ html.sb-anim .sb-rail {
 /* ---------- experience + projects pages ---------- */
 .page {
   max-width: 640px;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: 36px;
