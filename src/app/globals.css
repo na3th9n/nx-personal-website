@@ -395,10 +395,11 @@ html.sb-anim .sb-rail {
   color: var(--pill-ink);
 }
 /* Dark mode: a deep tint of the hue, with a light version of it as text */
+/* dark mode keeps the same pastels, a touch dimmer so they don't glare */
 .dark .pill[class*="pill-"] {
-  background: color-mix(in srgb, var(--pill-ink) 32%, var(--bg));
-  border-color: color-mix(in srgb, var(--pill-ink) 60%, var(--bg));
-  color: color-mix(in srgb, var(--pill-ink) 35%, #fff);
+  background: color-mix(in srgb, var(--pill) 88%, var(--bg));
+  border-color: color-mix(in srgb, var(--pill) 88%, var(--bg));
+  color: var(--pill-ink);
 }
 
 /* ---------- about ---------- */

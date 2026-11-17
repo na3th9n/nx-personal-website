@@ -141,9 +141,10 @@ projects:
   - year: 2026
     title: EVA
     summary: A wearable suit that tracks muscle activation and movement during lifting, with a React Native app that gives real-time form feedback. Software lead.
-    stack: [React Native, TypeScript]
+    stack: [TypeScript, React Native, Expo, Supabase, SQLite, C++, ESP32, Python, MATLAB]
     live: https://successful-radiator-9f3.notion.site/EVA-A-Wearable-Gym-Form-Correction-System-183c6cb96df983a9981b8121bda48eda
     live_label: Write-up # optional: changes the link text (default "Live")
+    source: https://github.com/na3th9n/eva
 
   - year: 2026
     title: TODO
