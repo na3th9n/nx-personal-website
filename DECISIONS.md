@@ -114,6 +114,16 @@ Judgment calls made while building from the v5 plan and the mockup.
   (640px) each centre on their own width. Below about 1000px the column
   fills the available space, so nothing changes there.
 
+## Revision 5 (Projects pills, dark pastels)
+
+- Projects pills use the same `pill_colors` map as Experience. New
+  entries: Express.js gray, Expo purple, Supabase green, SQLite indigo,
+  C++ pink (TypeScript is already blue in the EVA row), ESP32 red, and MATLAB orange.
+- Dark mode now shows the same pastels (mixed 12% toward the background)
+  instead of dark tints, which read as nearly plain.
+- Projects with no live site simply omit `live:`. The IRIS source link
+  pointed at localhost, so it was removed until there's a public repo.
+
 ## Theme and sidebar
 
 - The theme toggle's icon, text and screen-reader label switch with CSS

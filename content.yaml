@@ -147,15 +147,20 @@ projects:
     source: https://github.com/na3th9n/eva
 
   - year: 2026
-    title: TODO
-    summary: TODO
-    stack: [TODO]
+    title: "IRIS: AI Code Diff Visualizer"
+    summary: A tool that turns your agent generated code into a visual graph.
+    stack: [React, TypeScript, Node.js, Express.js]
     status: in progress
-    live: https://example.com
-    source: https://github.com/na3th9n/TODO
+
+  - year: 2026
+    title: Workout Tracker
+    summary: A fullstack application that records your workouts and their respective sets and reps per exercise. This project is meant for self-learning so no AI help or generated code.
+    stack: [React, TypeScript, Node.js, Express.js]
+    status: in progress
+    source: https://github.com/na3th9n/workout-tracker
 
 # ------------------------------------------------------------
-#  PILL COLOURS (the stack pills on the Experience page)
+#  PILL COLOURS (the stack pills on the Experience and Projects pages)
 #  Which pastel colour each language / framework gets.
 #  Colours: blue, sky, indigo, purple, pink, red, orange,
 #           yellow, lime, green, teal, gray
@@ -177,6 +182,13 @@ pill_colors:
   MS SQL Server: gray
   Node.js: green
   MongoDB: lime
+  Express.js: gray
+  Expo: purple
+  Supabase: green
+  SQLite: indigo
+  C++: pink
+  ESP32: red
+  MATLAB: orange
 
 # ------------------------------------------------------------
 #  LABELS (rarely changed)

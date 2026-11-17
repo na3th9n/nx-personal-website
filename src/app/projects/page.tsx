@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Pills, Row } from "@/components/Row";
-import { content } from "@/lib/content";
+import { content, pillColor } from "@/lib/content";
 import { externalProps, Inline } from "@/lib/inline";
 
 const { labels } = content;
@@ -23,7 +23,7 @@ export default function ProjectsPage() {
               )}
               {(p.stack.length > 0 || p.live || p.source || p.status) && (
                 <div className="proj-meta">
-                  <Pills items={p.stack} />
+                  <Pills items={p.stack} colorOf={pillColor} />
                   {p.status && <span className="status">{p.status}</span>}
                   {p.live && (
                     <a href={p.live} {...externalProps(p.live)}>
