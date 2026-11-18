@@ -2,7 +2,7 @@
 
 Live: https://nx-personal-website-owhj.vercel.app/
 
-Two pages (About, Projects), light/dark mode, a collapsible sidebar and a
+Three pages (About, Projects, Experience), light/dark mode, a collapsible sidebar and a
 photo slideshow. Built with Next.js and deployed on Vercel; every push to
 `main` redeploys automatically.
 

@@ -124,6 +124,11 @@ Judgment calls made while building from the v5 plan and the mockup.
 - Projects with no live site simply omit `live:`. The IRIS source link
   pointed at localhost, so it was removed until there's a public repo.
 
+## Revision 6
+
+- Nav order is now About, Projects, Experience (Projects moved above
+  Experience).
+
 ## Theme and sidebar
 
 - The theme toggle's icon, text and screen-reader label switch with CSS
